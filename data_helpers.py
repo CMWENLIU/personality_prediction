@@ -126,23 +126,16 @@ def batch_iter(data, batch_size, num_epochs, shuffle=True):
             start_index = batch_num * batch_size
             end_index = min((batch_num + 1) * batch_size, data_size)
             yield shuffled_data[start_index:end_index]
-def train_word_embedding(dimension,is_transfer, data_dirs) :
-	with open('temp.txt', 'w', encoding = 'utf-8') as wfile:
-		print('Following data are being loaded to train embedding vetors:')
-		count = 0
-		for data_dir in data_dirs:
-			for i in sorted(os.listdir(data_dir)):
-				print (data_dir + i)
-				with open (data_dir + i, 'r') as rfile:
-					for line in rfile:
-						new = clean_str(line)
-						wfile.write(new + '\n')
-						count += 1
-	sentences = LineSentence('temp.txt')
-	print ('Totally: ' + str(count) + ' lines of text')
-	model = Word2Vec(sentences, size = dimension, window=5, min_count=5, workers=4)
-	filesavepath = './embedding/' + is_transfer + '.' + str(dimension) + '.vec'
-	model.wv.save_word2vec_format(filesavepath, binary=False)
+def train_word_embedding(dimension,is_transfer, df) :
+    with open('temp.txt', 'w', encoding = 'utf-8') as wfile:
+      superlist = df['open_ended_1'] + df['open_ended_2'] + df['open_ended_3'] + df['open_ended_4'] + df['open_ended_5']
+      for t in superlist:
+        wfile.write(clean_str(t) + '\n')
+
+    sentences = LineSentence('temp.txt')
+    model = Word2Vec(sentences, size = dimension, window=5, min_count=5, workers=4)
+    filesavepath = './embedding/' + is_transfer + '.' + str(dimension) + '.vec'
+    model.wv.save_word2vec_format(filesavepath, binary=False)
 
     #head, filename = os.path.split(data)
     #filename += '.vec100'
