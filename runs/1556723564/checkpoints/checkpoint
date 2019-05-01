@@ -1,6 +1,0 @@
-model_checkpoint_path: "/home/bear/personality_prediction/runs/1556723564/checkpoints/model-2200"
-all_model_checkpoint_paths: "/home/bear/personality_prediction/runs/1556723564/checkpoints/model-1800"
-all_model_checkpoint_paths: "/home/bear/personality_prediction/runs/1556723564/checkpoints/model-1900"
-all_model_checkpoint_paths: "/home/bear/personality_prediction/runs/1556723564/checkpoints/model-2000"
-all_model_checkpoint_paths: "/home/bear/personality_prediction/runs/1556723564/checkpoints/model-2100"
-all_model_checkpoint_paths: "/home/bear/personality_prediction/runs/1556723564/checkpoints/model-2200"
